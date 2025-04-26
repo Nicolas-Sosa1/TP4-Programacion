@@ -12,13 +12,24 @@
         <div>
             <asp:Label ID="lblDestinoInicio" runat="server" Text="DESTINO INICIO" Font-Underline="True"></asp:Label>
             <br /><br />
-            PROVINICIA:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            PROVINCIA:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:DropDownList ID="ddlProvinciaInicio" runat="server" AutoPostBack="True"></asp:DropDownList>
             <br /><br />
             LOCALIDAD:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:DropDownList ID="ddlLocalidadInicio" runat="server"></asp:DropDownList>
             <br /><br />
         </div>
+        <asp:Label ID="lblDestinoFinal" runat="server" Font-Underline="True" Text="DESTINO FINAL"></asp:Label>
+        <p>
+            PROVINCIA:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:DropDownList ID="ddlProvinciaFinal" runat="server">
+            </asp:DropDownList>
+        </p>
+        <p>
+            LOCALIDAD:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:DropDownList ID="ddlLocalidadFinal" runat="server">
+            </asp:DropDownList>
+        </p>
     </form>
 </body>
 </html>
