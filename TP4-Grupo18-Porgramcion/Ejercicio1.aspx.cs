@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -22,6 +23,16 @@ namespace TP4_Grupo18_Porgramcion
                 SqlConnection sqlConnection = new SqlConnection(cadenaConexion);
                 sqlConnection.Open();
 
+                //insertar por defecto en todos los ddl "seleccionar"
+                ddlProvinciaInicio.Items.Insert(0, new ListItem("--Seleccionar--", ""));
+                ddlLocalidadInicio.Items.Insert(0, new ListItem("--Seleccionar--", ""));
+                ddlProvinciaFinal.Items.Insert(0, new ListItem("--Seleccionar--", ""));
+                ddlLocalidadFinal.Items.Insert(0, new ListItem("--Seleccionar--", ""));
+
+                //consulta a ejecutar
+                string consultaProvincia = "SELECT * FROM Provincias";
+                SqlCommand commandPI = new SqlCommand(consultaProvincia, sqlConnection);
+                SqlDataReader readerPI = commandPI.ExecuteReader();
             }
         }
     }

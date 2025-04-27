@@ -15,10 +15,23 @@
             </asp:DropDownList>&nbsp;
             <asp:TextBox ID="txtProducto" runat="server"></asp:TextBox>
             <br />
+            <br />
             IdCategoria:
             <asp:DropDownList ID="ddlCategoria" runat="server">
             </asp:DropDownList>&nbsp;
             <asp:TextBox ID="txtCategoria" runat="server"></asp:TextBox>
+            <br />
+            <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Button ID="btnFiltrar" runat="server" Text="Filtrar" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Button ID="btnQuitarFiltro" runat="server" Text="Quitar Filtro" />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Label ID="lblMensaje" runat="server"></asp:Label>
+            <br />
+            <br />
+            <asp:GridView ID="gvTabla" runat="server">
+            </asp:GridView>
             <br />
         </div>
     </form>
