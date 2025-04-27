@@ -46,5 +46,18 @@ namespace TP4_Grupo18_Porgramcion
                 ddlProvinciaInicio.Items.Insert(0, new ListItem("--Seleccionar--", ""));
             }
         }
+        protected void ddlProvinciaInicio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // ************** CARGA DE LOCALIDAD INICIO **************
+            // Vaciar antes de cargar e insertar nuevamente Seleccionar
+            ddlLocalidadInicio.Items.Clear();
+            ddlLocalidadInicio.Items.Insert(0, new ListItem("--Seleccionar--", ""));
+
+            // El ID(string) de la provincia se guarda en una variable para luego se concatenada
+            // a la consulta SQL condicional
+            string consultaLocalidad = "SELECT IdLocalidad, NombreLocalidad FROM Localidades WHERE IdProvincia = ";
+            idProvincia = ddlProvinciaInicio.SelectedValue;
+            consultaLocalidad = consultaLocalidad + idProvincia;
+        }
     }
 }

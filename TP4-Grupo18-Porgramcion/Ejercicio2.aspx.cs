@@ -65,5 +65,15 @@ namespace TP4_Grupo18_Porgramcion
             //se usa para verificar si hay filtros
             bool hayFiltro = false;
         }
+        private string ObtenerOperador(string seleccion)
+        {
+            switch (seleccion)
+            {
+                case "Igual a": return "=";
+                case "Mayor a": return ">";
+                case "Menor a": return "<";
+                default: return "";
+            }
+        }
     }
 }

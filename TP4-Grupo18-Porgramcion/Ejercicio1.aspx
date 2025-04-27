@@ -13,7 +13,7 @@
             <asp:Label ID="lblDestinoInicio" runat="server" Text="DESTINO INICIO" Font-Underline="True"></asp:Label>
             <br /><br />
             PROVINCIA:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:DropDownList ID="ddlProvinciaInicio" runat="server" AutoPostBack="True"></asp:DropDownList>
+            <asp:DropDownList ID="ddlProvinciaInicio" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlProvinciaInicio_SelectedIndexChanged"></asp:DropDownList>
             <br /><br />
             LOCALIDAD:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:DropDownList ID="ddlLocalidadInicio" runat="server"></asp:DropDownList>
