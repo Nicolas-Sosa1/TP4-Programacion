@@ -33,6 +33,17 @@ namespace TP4_Grupo18_Porgramcion
                 string consultaProvincia = "SELECT * FROM Provincias";
                 SqlCommand commandPI = new SqlCommand(consultaProvincia, sqlConnection);
                 SqlDataReader readerPI = commandPI.ExecuteReader();
+
+                ddlProvinciaInicio.DataSource = readerPI;
+                ddlProvinciaInicio.DataTextField = "NombreProvincia";
+                ddlProvinciaInicio.DataValueField = "IdProvincia";
+                ddlProvinciaInicio.DataBind();
+
+                //Cerrar conexion
+                readerPI.Close();
+                sqlConnection.Close();
+
+                ddlProvinciaInicio.Items.Insert(0, new ListItem("--Seleccionar--", ""));
             }
         }
     }
