@@ -49,5 +49,21 @@ namespace TP4_Grupo18_Porgramcion
 
             connection.Close();
         }
+
+        protected void btnFiltrar_Click(object sender, EventArgs e)
+        {
+            //ARMADO DE LA CONSULTA
+
+            //Primera parte de la consulta
+            string consulta = "SELECT * FROM Productos";
+            string condicion = "";
+
+            //se obtienen los operadores logicos en una funcion aparte
+            string operadorProd = ObtenerOperador(ddlProducto.SelectedValue);
+            string operadorCat = ObtenerOperador(ddlCategoria.SelectedValue);
+
+            //se usa para verificar si hay filtros
+            bool hayFiltro = false;
+        }
     }
 }
