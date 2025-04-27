@@ -19,6 +19,11 @@ namespace TP4_Grupo18_Porgramcion
                 ddlProducto.Items.Add("Mayor a");
                 ddlProducto.Items.Add("Menor a");
 
+                ddlCategoria.Items.Add("--Seleccionar--");
+                ddlCategoria.Items.Add("Igual a");
+                ddlCategoria.Items.Add("Mayor a");
+                ddlCategoria.Items.Add("Menor a");
+
             }
 
         }

@@ -12,9 +12,13 @@
         <div>
             IdProducto:&nbsp;
             <asp:DropDownList ID="ddlProducto" runat="server">
-            </asp:DropDownList>
-&nbsp;
+            </asp:DropDownList>&nbsp;
             <asp:TextBox ID="txtProducto" runat="server"></asp:TextBox>
+            <br />
+            IdCategoria:
+            <asp:DropDownList ID="ddlCategoria" runat="server">
+            </asp:DropDownList>&nbsp;
+            <asp:TextBox ID="txtCategoria" runat="server"></asp:TextBox>
             <br />
         </div>
     </form>
