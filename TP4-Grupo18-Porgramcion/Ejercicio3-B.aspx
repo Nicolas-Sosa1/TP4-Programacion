@@ -15,7 +15,7 @@
             <asp:GridView ID="gvLibros" runat="server">
             </asp:GridView>
             <br />
-            <asp:LinkButton ID="lbConsultar" runat="server">Consultar otro tema</asp:LinkButton>
+            <asp:LinkButton ID="lbConsultar" runat="server" OnClick="lbConsultar_Click">Consultar otro tema</asp:LinkButton>
             <br />
             <br />
             <asp:Label ID="lblError" runat="server"></asp:Label>

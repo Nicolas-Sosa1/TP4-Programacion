@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -10,7 +11,7 @@ namespace TP4_Grupo18_Porgramcion
 {
     public partial class Ejercicio3_B : System.Web.UI.Page
     {
-        private const string cadenaConexion = @"Data Source=DESKTOP-Q0EVBE4\SQLEXPRESS;Initial Catalog=Libreria;Integrated Security=True";
+        private const string cadenaConexion = "Data Source=localhost\\sqlexpress;Initial Catalog=Libreria;Integrated Security=True";
         private string consultarLibros = "SELECT * FROM Libros WHERE IdTema = @IdTema";
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -35,11 +36,22 @@ namespace TP4_Grupo18_Porgramcion
                 sqlParameter = sqlCommand.Parameters.Add("@IdTema", SqlDbType.Int);
                 sqlParameter.Value = idTema;
 
-            }
-            catch (Exception ex)
-            {
+                SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+                gvLibros.DataSource = sqlDataReader;
+                gvLibros.DataBind();
+
+                sqlConnection.Close();
 
             }
+            catch (Exception Error)
+            {
+                lblError.Text = "Ocurrió un error al cargar los libros";
+            }
+        }
+
+        protected void lbConsultar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Ejercicio3.aspx");
         }
     }
 }

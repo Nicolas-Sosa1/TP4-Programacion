@@ -42,7 +42,7 @@ namespace TP4_Grupo18_Porgramcion
 
         protected void lbVerLibros_Click(object sender, EventArgs e)
         {
-            Session["IdTemas"] = ddlTemas.SelectedValue;
+            Session["IdTema"] = ddlTemas.SelectedValue;
             Server.Transfer("Ejercicio3-B.aspx");
         }
     }

@@ -104,7 +104,7 @@ namespace TP4_Grupo18_Porgramcion
                 conexionPF.Close();
             }
 
-            CargarLocalidadFinal():
+            CargarLocalidadFinal();
         }
 
         public void CargarLocalidadFinal() 
