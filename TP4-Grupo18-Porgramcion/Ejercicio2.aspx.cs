@@ -10,7 +10,7 @@ namespace TP4_Grupo18_Porgramcion
 {
     public partial class Ejercicio2 : System.Web.UI.Page
     {
-        private const string conexionNeptuno = "Data Source=localhost\\sqlexpress;InitialCatalog=Neptuno;Integrated Security = True";
+        private const string conexionNeptuno = "Data Source=localhost\\sqlexpress;Initial Catalog=Neptuno;Integrated Security=True";
 
 
         protected void Page_Load(object sender, EventArgs e)

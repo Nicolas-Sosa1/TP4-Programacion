@@ -11,7 +11,7 @@ namespace TP4_Grupo18_Porgramcion
 {
     public partial class Ejercicio1 : System.Web.UI.Page
     {
-        private const string cadenaConexion = @"Data Source=DESKTOP-Q0EVBE4\SQLEXPRESS;Initial Catalog=Viajes;Integrated Security=True";
+        private const string cadenaConexion = "Data Source=localhost\\sqlexpress;Initial Catalog=Viajes;Integrated Security=True";
 
         //Variables para concatenar con consultas condicionales
         string idProvincia;
@@ -109,8 +109,8 @@ namespace TP4_Grupo18_Porgramcion
 
         public void CargarLocalidadFinal()
         {
-            ddlProvinciaFinal.Items.Clear();
-            ddlProvinciaFinal.Items.Insert(0, new ListItem("--Seleccionar--", ""));
+            ddlLocalidadFinal.Items.Clear();
+            ddlLocalidadFinal.Items.Insert(0, new ListItem("--Seleccionar--", ""));
 
             string consultaLocalidadFin = "SELECT IdLocalidad, NombreLocalidad FROM Localidades WHERE IdProvincia = ";
             idProvinciaFin = ddlProvinciaFinal.SelectedValue;
