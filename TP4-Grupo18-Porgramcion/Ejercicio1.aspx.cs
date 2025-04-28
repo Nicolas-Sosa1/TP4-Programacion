@@ -81,7 +81,7 @@ namespace TP4_Grupo18_Porgramcion
             }
 
             ddlProvinciaFinal.Items.Clear();
-            ddlProvinciaFinal.Items.Insert(0, new ListItem("--Seleccionar--"));
+            ddlProvinciaFinal.Items.Insert(0, new ListItem("--Seleccionar--", ""));
 
             string consultaProvinciaFin = "SELECT * FROM Provincias WHERE IdProvincia <> ";
             idProvincia = ddlProvinciaInicio.SelectedValue;
@@ -107,8 +107,15 @@ namespace TP4_Grupo18_Porgramcion
             CargarLocalidadFinal();
         }
 
+        protected void ddlProvinciaFinal_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CargarLocalidadFinal();
+        }
+
         public void CargarLocalidadFinal()
         {
+            // ************** CARGA DDL LOCALIDAD FIN **************
+            // Vaciar antes de cargar e insertar nuevamente Seleccionar
             ddlLocalidadFinal.Items.Clear();
             ddlLocalidadFinal.Items.Insert(0, new ListItem("--Seleccionar--", ""));
 
@@ -136,13 +143,7 @@ namespace TP4_Grupo18_Porgramcion
                 readerLF.Close();
                 conexionLF.Close();
             }
-
-            
         }
 
-        protected void ddlProvinciaFinal_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            CargarLocalidadFinal();
-        }
     }
 }
