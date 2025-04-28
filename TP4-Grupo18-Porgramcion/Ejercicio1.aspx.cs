@@ -79,9 +79,28 @@ namespace TP4_Grupo18_Porgramcion
                 readerLI.Close();
                 conexionLI.Close();
 
-                ddlProvinciaInicio.Items.Insert(0, new ListItem("--Seleccionar--", ""));
 
             }
+
+
+            ddlProvinciaFinal.Items.Clear();
+            ddlProvinciaFinal.Items.Insert(0, new ListItem("--Seleccionar--"));
+
+
+            string consultaProvinciaFin = "SELECT * FROM Provincias WHERE IdProvincia <> ";
+            idProvincia = ddlProvinciaInicio.SelectedValue;
+            consultaProvinciaFin = consultaProvinciaFin + idProvincia;
+
+            if (!string.IsNullOrEmpty(idProvincia))
+            { 
+                SqlConnection conexionPF = new SqlConnection(cadenaConexion);
+                conexionPF.Open();
+
+                SqlCommand commandPF = new SqlCommand(consultaProvinciaFin, conexionPF);
+                SqlDataReader readerPF = commandPF.ExecuteReader();
+
+            }
+
         }
     }
 }
