@@ -10,8 +10,9 @@ namespace TP4_Grupo18_Porgramcion
 {
     public partial class Ejercicio2 : System.Web.UI.Page
     {
-        private const string conexionNeptuno = "Data Source=localhost\\sqlexpress;Initial Catalog=Neptuno;Integrated Security=True";
-        
+        private const string conexionNeptuno = "Data Source=localhost\\sqlexpress;InitialCatalog=Neptuno;Integrated Security = True";
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (IsPostBack == false)
@@ -80,6 +81,31 @@ namespace TP4_Grupo18_Porgramcion
                 hayFiltro = true;
             }
 
+            if (hayFiltro)
+            {
+                consulta += " WHERE " + condicion;
+            }
+
+            try
+            {
+                // Ejecutar la consulta
+                SqlConnection connection = new SqlConnection(conexionNeptuno);
+                connection.Open();
+
+                SqlCommand command = new SqlCommand(consulta, connection);
+                SqlDataReader dataReader = command.ExecuteReader();
+
+                gvTabla.DataSource = dataReader;
+                gvTabla.DataBind();
+
+                connection.Close();
+                lblMensaje.Text = "";
+            }
+            catch (Exception ex)
+            {
+                lblMensaje.Text = "Ha ocurrido un error en la consulta, verifique los campos.";
+            }
+
 
 
         }
@@ -97,6 +123,13 @@ namespace TP4_Grupo18_Porgramcion
         protected void btnQuitarFiltro_Click(object sender, EventArgs e)
         {
 
+            CargarGridView();
+
+            ddlCategoria.SelectedIndex = 0;
+            ddlProducto.SelectedIndex = 0;
+
+            txtCategoria.Text = string.Empty;
+            txtProducto.Text = string.Empty;
         }
     }
 }

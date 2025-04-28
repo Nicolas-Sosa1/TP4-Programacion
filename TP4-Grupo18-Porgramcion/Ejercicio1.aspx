@@ -16,18 +16,18 @@
             <asp:DropDownList ID="ddlProvinciaInicio" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlProvinciaInicio_SelectedIndexChanged"></asp:DropDownList>
             <br /><br />
             LOCALIDAD:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:DropDownList ID="ddlLocalidadInicio" runat="server"></asp:DropDownList>
+            <asp:DropDownList ID="ddlLocalidadInicio" runat="server" AutoPostBack="True"></asp:DropDownList>
             <br /><br />
         </div>
         <asp:Label ID="lblDestinoFinal" runat="server" Font-Underline="True" Text="DESTINO FINAL"></asp:Label>
         <p>
             PROVINCIA:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:DropDownList ID="ddlProvinciaFinal" runat="server">
+            <asp:DropDownList ID="ddlProvinciaFinal" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlProvinciaFinal_SelectedIndexChanged">
             </asp:DropDownList>
         </p>
         <p>
             LOCALIDAD:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:DropDownList ID="ddlLocalidadFinal" runat="server">
+            <asp:DropDownList ID="ddlLocalidadFinal" runat="server" AutoPostBack="True">
             </asp:DropDownList>
         </p>
     </form>

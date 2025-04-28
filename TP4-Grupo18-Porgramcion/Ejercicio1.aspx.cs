@@ -11,7 +11,7 @@ namespace TP4_Grupo18_Porgramcion
 {
     public partial class Ejercicio1 : System.Web.UI.Page
     {
-        private const string cadenaConexion = "Data Source=localhost\\sqlexpress;Initial Catalog=Viajes;Integrated Security = True";
+        private const string cadenaConexion = @"Data Source=DESKTOP-Q0EVBE4\SQLEXPRESS;Initial Catalog=Viajes;Integrated Security=True";
 
         //Variables para concatenar con consultas condicionales
         string idProvincia;
@@ -88,7 +88,7 @@ namespace TP4_Grupo18_Porgramcion
             consultaProvinciaFin = consultaProvinciaFin + idProvincia;
 
             if (!string.IsNullOrEmpty(idProvincia))
-            { 
+            {
                 SqlConnection conexionPF = new SqlConnection(cadenaConexion);
                 conexionPF.Open();
 
@@ -107,7 +107,7 @@ namespace TP4_Grupo18_Porgramcion
             CargarLocalidadFinal();
         }
 
-        public void CargarLocalidadFinal() 
+        public void CargarLocalidadFinal()
         {
             ddlProvinciaFinal.Items.Clear();
             ddlProvinciaFinal.Items.Insert(0, new ListItem("--Seleccionar--", ""));
@@ -115,6 +115,34 @@ namespace TP4_Grupo18_Porgramcion
             string consultaLocalidadFin = "SELECT IdLocalidad, NombreLocalidad FROM Localidades WHERE IdProvincia = ";
             idProvinciaFin = ddlProvinciaFinal.SelectedValue;
             consultaLocalidadFin = consultaLocalidadFin + idProvinciaFin;
+
+            if (!string.IsNullOrEmpty(idProvinciaFin))
+            {
+                // Abrir conexion
+                SqlConnection conexionLF = new SqlConnection(cadenaConexion);
+                conexionLF.Open();
+
+                // Consulta a ejecutar
+                SqlCommand commandLF = new SqlCommand(consultaLocalidadFin, conexionLF);
+                SqlDataReader readerLF = commandLF.ExecuteReader();
+
+                // Carga de DDL
+                ddlLocalidadFinal.DataSource = readerLF;
+                ddlLocalidadFinal.DataTextField = "NombreLocalidad";
+                ddlLocalidadFinal.DataValueField = "IdLocalidad";
+                ddlLocalidadFinal.DataBind();
+
+                // Cerrar conexion
+                readerLF.Close();
+                conexionLF.Close();
+            }
+
+            
+        }
+
+        protected void ddlProvinciaFinal_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CargarLocalidadFinal();
         }
     }
 }
