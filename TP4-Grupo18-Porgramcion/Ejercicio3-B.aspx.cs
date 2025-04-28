@@ -28,6 +28,13 @@ namespace TP4_Grupo18_Porgramcion
                 // Establecer la conexión a la base de datos
                 SqlConnection sqlConnection = new SqlConnection(cadenaConexion);
                 sqlConnection.Open();
+
+                SqlCommand sqlCommand = new SqlCommand(consultarLibros, sqlConnection);
+
+                SqlParameter sqlParameter = new SqlParameter();
+                sqlParameter = sqlCommand.Parameters.Add("@IdTema", SqlDbType.Int);
+                sqlParameter.Value = idTema;
+
             }
             catch (Exception ex)
             {
