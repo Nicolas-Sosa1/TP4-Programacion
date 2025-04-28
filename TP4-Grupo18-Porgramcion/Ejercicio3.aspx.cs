@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -17,6 +18,16 @@ namespace TP4_Grupo18_Porgramcion
             {
 
             }
+        }
+
+        private void CargarTemas()
+        {
+            SqlConnection connection = new SqlConnection(cadenaConexion);
+            connection.Open();
+
+            SqlCommand sqlCommand = new SqlCommand(consultaTemas, connection);
+
+            SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
         }
     }
 }
