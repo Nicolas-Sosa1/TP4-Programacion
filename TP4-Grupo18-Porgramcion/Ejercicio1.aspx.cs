@@ -11,7 +11,7 @@ namespace TP4_Grupo18_Porgramcion
 {
     public partial class Ejercicio1 : System.Web.UI.Page
     {
-        private const string cadenaConexion = "Data Source=localhost\\sqlexpress;InitialCatalog=Viajes;Integrated Security = True";
+        private const string cadenaConexion = "Data Source=localhost\\sqlexpress;Initial Catalog=Viajes;Integrated Security = True";
 
         //Variables para concatenar con consultas condicionales
         string idProvincia;
@@ -58,6 +58,30 @@ namespace TP4_Grupo18_Porgramcion
             string consultaLocalidad = "SELECT IdLocalidad, NombreLocalidad FROM Localidades WHERE IdProvincia = ";
             idProvincia = ddlProvinciaInicio.SelectedValue;
             consultaLocalidad = consultaLocalidad + idProvincia;
+
+            if (!string.IsNullOrEmpty(idProvincia))
+            {
+                // Abrir conexion (nueva)
+                SqlConnection conexionLI = new SqlConnection(cadenaConexion);
+                conexionLI.Open();
+
+                // Consulta a ejecutar
+                SqlCommand commandLI = new SqlCommand(consultaLocalidad, conexionLI);
+                SqlDataReader readerLI = commandLI.ExecuteReader();
+
+                // Carga de DDL
+                ddlLocalidadInicio.DataSource = readerLI;
+                ddlLocalidadInicio.DataTextField = "NombreLocalidad";
+                ddlLocalidadInicio.DataValueField = "IdLocalidad";
+                ddlLocalidadInicio.DataBind();
+
+                // Cerrar conexion
+                readerLI.Close();
+                conexionLI.Close();
+
+                ddlProvinciaInicio.Items.Insert(0, new ListItem("--Seleccionar--", ""));
+
+            }
         }
     }
 }
