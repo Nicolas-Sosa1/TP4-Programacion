@@ -10,7 +10,7 @@ namespace TP4_Grupo18_Porgramcion
 {
     public partial class Ejercicio2 : System.Web.UI.Page
     {
-        private const string conexionNeptuno = @"Data Source=localhost\\sqlexpress;InitialCatalog=Neptuno;Integrated Security=True";
+        private const string conexionNeptuno = "Data Source=localhost\\sqlexpress;Initial Catalog=Neptuno;Integrated Security=True";
         
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -64,6 +64,24 @@ namespace TP4_Grupo18_Porgramcion
 
             //se usa para verificar si hay filtros
             bool hayFiltro = false;
+
+            if(!string.IsNullOrEmpty(txtProducto.Text) && operadorProd != "")
+            {
+                condicion += "IdProducto " + operadorProd + " " + txtProducto.Text;
+                hayFiltro = true;
+            }
+
+            if (!string.IsNullOrEmpty(txtCategoria.Text) && operadorCat != "")
+            {
+                if (hayFiltro)
+                    condicion += " AND ";
+
+                condicion += "IdCategoría " + operadorCat + " " + txtCategoria.Text;
+                hayFiltro = true;
+            }
+
+
+
         }
         private string ObtenerOperador(string seleccion)
         {
@@ -74,6 +92,11 @@ namespace TP4_Grupo18_Porgramcion
                 case "Menor a": return "<";
                 default: return "";
             }
+        }
+
+        protected void btnQuitarFiltro_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
