@@ -16,7 +16,7 @@ namespace TP4_Grupo18_Porgramcion
         {
             if (!IsPostBack)
             {
-
+                CargarTemas();
             }
         }
 
@@ -28,6 +28,22 @@ namespace TP4_Grupo18_Porgramcion
             SqlCommand sqlCommand = new SqlCommand(consultaTemas, connection);
 
             SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+
+            //Asignar la tabla de datos como origen de datos del dropdownlist
+            ddlTemas.DataSource = sqlDataReader;
+            ddlTemas.DataTextField = "Tema";
+            ddlTemas.DataValueField = "IdTema";//value
+
+            //enlazar los datos con el dropdownlist
+            ddlTemas.DataBind();
+
+            connection.Close();
+        }
+
+        protected void lbVerLibros_Click(object sender, EventArgs e)
+        {
+            Session["IdTemas"] = ddlTemas.SelectedValue;
+            Server.Transfer("Ejercicio3-B.aspx");
         }
     }
 }

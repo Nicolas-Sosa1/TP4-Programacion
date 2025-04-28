@@ -78,14 +78,10 @@ namespace TP4_Grupo18_Porgramcion
                 // Cerrar conexion
                 readerLI.Close();
                 conexionLI.Close();
-
-
             }
-
 
             ddlProvinciaFinal.Items.Clear();
             ddlProvinciaFinal.Items.Insert(0, new ListItem("--Seleccionar--"));
-
 
             string consultaProvinciaFin = "SELECT * FROM Provincias WHERE IdProvincia <> ";
             idProvincia = ddlProvinciaInicio.SelectedValue;
@@ -99,8 +95,26 @@ namespace TP4_Grupo18_Porgramcion
                 SqlCommand commandPF = new SqlCommand(consultaProvinciaFin, conexionPF);
                 SqlDataReader readerPF = commandPF.ExecuteReader();
 
+                ddlProvinciaFinal.DataSource = readerPF;
+                ddlProvinciaFinal.DataTextField = "NombreProvincia";
+                ddlProvinciaFinal.DataValueField = "IdProvincia";
+                ddlProvinciaFinal.DataBind();
+
+                readerPF.Close();
+                conexionPF.Close();
             }
 
+            CargarLocalidadFinal():
+        }
+
+        public void CargarLocalidadFinal() 
+        {
+            ddlProvinciaFinal.Items.Clear();
+            ddlProvinciaFinal.Items.Insert(0, new ListItem("--Seleccionar--", ""));
+
+            string consultaLocalidadFin = "SELECT IdLocalidad, NombreLocalidad FROM Localidades WHERE IdProvincia = ";
+            idProvinciaFin = ddlProvinciaFinal.SelectedValue;
+            consultaLocalidadFin = consultaLocalidadFin + idProvinciaFin;
         }
     }
 }
